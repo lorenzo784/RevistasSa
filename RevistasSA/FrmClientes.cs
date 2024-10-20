@@ -16,6 +16,7 @@ namespace RevistasSA
     {
         private Database database;
         private FrmInicio inicio;
+
         public FrmClientes(FrmInicio inicio,Database database)
         {
             InitializeComponent();

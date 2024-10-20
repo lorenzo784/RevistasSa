@@ -14,7 +14,7 @@ namespace RevistasSA
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Database database = new Database();
-            Application.Run(new FrmInicio(database));
+            Application.Run(new FrmPrincipal());
         }
     }
 }
