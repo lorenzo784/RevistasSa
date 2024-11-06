@@ -14,8 +14,8 @@ namespace RevistasSA
     public partial class FrmRevistas : Form
     {
         private Database database;
-        private FrmInicio inicio;
-        public FrmRevistas(FrmInicio inicio, Database database)
+        private FrmPrincipal inicio;
+        public FrmRevistas(FrmPrincipal inicio, Database database)
         {
             InitializeComponent();
             this.database = database;
@@ -31,9 +31,9 @@ namespace RevistasSA
             frmRevistaAdd.FormBorderStyle = FormBorderStyle.None;
             frmRevistaAdd.Dock = DockStyle.Fill;
 
-            inicio.pContenedor.Controls.Clear();
+            inicio.panelContenedor.Controls.Clear();
 
-            inicio.pContenedor.Controls.Add(frmRevistaAdd);
+            inicio.panelContenedor.Controls.Add(frmRevistaAdd);
             frmRevistaAdd.Show();
         }
 
@@ -41,6 +41,7 @@ namespace RevistasSA
         {
             DataTable dt = database.ObtenerDatosRevistas();
             dgvRevistas.DataSource = dt;
+            dgvRevistas.Columns["Nombre"].Width = 170;
         }
     }
 }

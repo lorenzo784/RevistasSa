@@ -14,8 +14,8 @@ namespace RevistasSA
     public partial class FrmSuscripciones : Form
     {
         private Database database;
-        private FrmInicio inicio;
-        public FrmSuscripciones(FrmInicio inicio, Database database)
+        private FrmPrincipal inicio;
+        public FrmSuscripciones(FrmPrincipal inicio, Database database)
         {
             InitializeComponent();
             this.database = database;
@@ -27,6 +27,7 @@ namespace RevistasSA
         {
             DataTable dt = database.ObtenerDatosSuscripciones();
             dgvSuscipciones.DataSource = dt;
+            dgvSuscipciones.Columns["NumeroSuscripcion"].Width = 170;
         }
     }
 }

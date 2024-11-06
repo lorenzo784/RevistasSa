@@ -37,26 +37,27 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(240, 28);
+            label1.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
+            label1.Location = new Point(354, 33);
             label1.Name = "label1";
-            label1.Size = new Size(81, 24);
+            label1.Size = new Size(92, 22);
             label1.TabIndex = 0;
             label1.Text = "Clientes";
             // 
             // dgvClientes
             // 
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Location = new Point(54, 103);
+            dgvClientes.Location = new Point(50, 103);
             dgvClientes.Name = "dgvClientes";
-            dgvClientes.Size = new Size(456, 524);
+            dgvClientes.Size = new Size(695, 524);
             dgvClientes.TabIndex = 1;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(445, 28);
+            btnAgregar.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
+            btnAgregar.Location = new Point(644, 26);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(83, 31);
+            btnAgregar.Size = new Size(101, 31);
             btnAgregar.TabIndex = 2;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -66,8 +67,8 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.BlanchedAlmond;
-            ClientSize = new Size(576, 682);
+            BackColor = Color.FromArgb(0, 122, 204);
+            ClientSize = new Size(800, 677);
             Controls.Add(btnAgregar);
             Controls.Add(dgvClientes);
             Controls.Add(label1);

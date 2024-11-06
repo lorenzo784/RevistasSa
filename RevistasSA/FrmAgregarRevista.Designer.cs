@@ -43,90 +43,100 @@
             // tbFrecuencia
             // 
             tbFrecuencia.BackColor = Color.AliceBlue;
+            tbFrecuencia.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             tbFrecuencia.Location = new Point(60, 479);
             tbFrecuencia.Name = "tbFrecuencia";
-            tbFrecuencia.Size = new Size(229, 26);
+            tbFrecuencia.Size = new Size(229, 30);
             tbFrecuencia.TabIndex = 36;
             // 
             // label5
             // 
             label5.AutoSize = true;
+            label5.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label5.Location = new Point(60, 429);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(100, 19);
+            label5.Size = new Size(124, 22);
             label5.TabIndex = 35;
             label5.Text = "Frecuencia:";
             // 
             // tbCategoria
             // 
             tbCategoria.BackColor = Color.AliceBlue;
+            tbCategoria.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             tbCategoria.Location = new Point(60, 367);
             tbCategoria.Name = "tbCategoria";
-            tbCategoria.Size = new Size(229, 26);
+            tbCategoria.Size = new Size(229, 30);
             tbCategoria.TabIndex = 34;
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label3.Location = new Point(60, 321);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(89, 19);
+            label3.Size = new Size(111, 22);
             label3.TabIndex = 33;
             label3.Text = "Categoria:";
             // 
             // tbPrecio
             // 
             tbPrecio.BackColor = Color.AliceBlue;
+            tbPrecio.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             tbPrecio.Location = new Point(60, 260);
             tbPrecio.Name = "tbPrecio";
-            tbPrecio.Size = new Size(229, 26);
+            tbPrecio.Size = new Size(229, 30);
             tbPrecio.TabIndex = 32;
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label4.Location = new Point(60, 207);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(64, 19);
+            label4.Size = new Size(78, 22);
             label4.TabIndex = 31;
             label4.Text = "Precio:";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label2.Location = new Point(60, 110);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(80, 19);
+            label2.Size = new Size(101, 22);
             label2.TabIndex = 30;
             label2.Text = "Nombre: ";
             // 
             // tbNombre
             // 
             tbNombre.BackColor = Color.AliceBlue;
+            tbNombre.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             tbNombre.Location = new Point(60, 145);
             tbNombre.Name = "tbNombre";
-            tbNombre.Size = new Size(229, 26);
+            tbNombre.Size = new Size(229, 30);
             tbNombre.TabIndex = 29;
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label1.Location = new Point(222, 66);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(131, 19);
+            label1.Size = new Size(168, 22);
             label1.TabIndex = 28;
             label1.Text = "Agregar Revista";
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(431, 587);
+            btnAgregar.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
+            btnAgregar.Location = new Point(652, 606);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(92, 34);
+            btnAgregar.Size = new Size(107, 34);
             btnAgregar.TabIndex = 37;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -136,8 +146,8 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.BlanchedAlmond;
-            ClientSize = new Size(576, 682);
+            BackColor = Color.FromArgb(0, 122, 204);
+            ClientSize = new Size(800, 677);
             Controls.Add(btnAgregar);
             Controls.Add(tbFrecuencia);
             Controls.Add(label5);

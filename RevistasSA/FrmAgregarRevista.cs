@@ -22,11 +22,17 @@ namespace RevistasSA
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (tbNombre.Text == "" || tbPrecio.Text == "" || tbCategoria.Text == "" || tbFrecuencia.Text == "")
+            {
+                MessageBox.Show("Rellene los campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             string nombre = tbNombre.Text;
             string precio = tbPrecio.Text;
             string categoria = tbCategoria.Text;
             string frecuencia = tbFrecuencia.Text;
             database.InsertarEmpleado(nombre, precio, categoria, frecuencia);
+            MessageBox.Show("La operación se realizó con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             limpiarCampos();
         }
 

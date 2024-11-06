@@ -36,10 +36,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(234, 34);
+            label1.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
+            label1.Location = new Point(336, 32);
             label1.Name = "label1";
-            label1.Size = new Size(130, 24);
+            label1.Size = new Size(150, 22);
             label1.TabIndex = 0;
             label1.Text = "Suscripciones";
             // 
@@ -48,15 +48,15 @@
             dgvSuscipciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSuscipciones.Location = new Point(44, 109);
             dgvSuscipciones.Name = "dgvSuscipciones";
-            dgvSuscipciones.Size = new Size(475, 509);
+            dgvSuscipciones.Size = new Size(705, 509);
             dgvSuscipciones.TabIndex = 2;
             // 
             // FrmSuscripciones
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.BlanchedAlmond;
-            ClientSize = new Size(576, 682);
+            BackColor = Color.FromArgb(0, 122, 204);
+            ClientSize = new Size(800, 677);
             Controls.Add(dgvSuscipciones);
             Controls.Add(label1);
             Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);

@@ -43,90 +43,100 @@
             // tbTelefono
             // 
             tbTelefono.BackColor = Color.AliceBlue;
+            tbTelefono.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             tbTelefono.Location = new Point(57, 525);
             tbTelefono.Name = "tbTelefono";
-            tbTelefono.Size = new Size(229, 26);
+            tbTelefono.Size = new Size(229, 30);
             tbTelefono.TabIndex = 17;
             // 
             // label5
             // 
             label5.AutoSize = true;
+            label5.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label5.Location = new Point(57, 471);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(81, 19);
+            label5.Size = new Size(104, 22);
             label5.TabIndex = 16;
             label5.Text = "Telefono:";
             // 
             // tbDireccion
             // 
             tbDireccion.BackColor = Color.AliceBlue;
+            tbDireccion.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             tbDireccion.Location = new Point(57, 407);
             tbDireccion.Name = "tbDireccion";
-            tbDireccion.Size = new Size(456, 26);
+            tbDireccion.Size = new Size(456, 30);
             tbDireccion.TabIndex = 15;
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label3.Location = new Point(57, 353);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(88, 19);
+            label3.Size = new Size(112, 22);
             label3.TabIndex = 14;
             label3.Text = "Direccion:";
             // 
             // tbApellido
             // 
             tbApellido.BackColor = Color.AliceBlue;
+            tbApellido.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             tbApellido.Location = new Point(57, 287);
             tbApellido.Name = "tbApellido";
-            tbApellido.Size = new Size(229, 26);
+            tbApellido.Size = new Size(229, 30);
             tbApellido.TabIndex = 13;
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label4.Location = new Point(57, 233);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(77, 19);
+            label4.Size = new Size(100, 22);
             label4.TabIndex = 12;
             label4.Text = "Apellido:";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label2.Location = new Point(57, 116);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(80, 19);
+            label2.Size = new Size(101, 22);
             label2.TabIndex = 11;
             label2.Text = "Nombre: ";
             // 
             // tbNombre
             // 
             tbNombre.BackColor = Color.AliceBlue;
+            tbNombre.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             tbNombre.Location = new Point(57, 157);
             tbNombre.Name = "tbNombre";
-            tbNombre.Size = new Size(229, 26);
+            tbNombre.Size = new Size(229, 30);
             tbNombre.TabIndex = 10;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(229, 54);
+            label1.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
+            label1.Location = new Point(347, 48);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(151, 19);
+            label1.Size = new Size(192, 22);
             label1.TabIndex = 9;
             label1.Text = "Agregar Empleado";
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(458, 597);
+            btnAgregar.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
+            btnAgregar.Location = new Point(644, 604);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(85, 27);
+            btnAgregar.Size = new Size(103, 34);
             btnAgregar.TabIndex = 18;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -136,8 +146,8 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.BlanchedAlmond;
-            ClientSize = new Size(576, 682);
+            BackColor = Color.FromArgb(0, 122, 204);
+            ClientSize = new Size(800, 677);
             Controls.Add(btnAgregar);
             Controls.Add(tbTelefono);
             Controls.Add(label5);

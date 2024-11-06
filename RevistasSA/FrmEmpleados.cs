@@ -14,8 +14,8 @@ namespace RevistasSA
     public partial class FrmEmpleados : Form
     {
         private Database database;
-        private FrmInicio inicio;
-        public FrmEmpleados(FrmInicio inicio, Database database)
+        private FrmPrincipal inicio;
+        public FrmEmpleados(FrmPrincipal inicio, Database database)
         {
             InitializeComponent();
             this.database = database;
@@ -31,9 +31,9 @@ namespace RevistasSA
             frmEmpleadoAdd.FormBorderStyle = FormBorderStyle.None;
             frmEmpleadoAdd.Dock = DockStyle.Fill;
 
-            inicio.pContenedor.Controls.Clear();
+            inicio.panelContenedor.Controls.Clear();
 
-            inicio.pContenedor.Controls.Add(frmEmpleadoAdd);
+            inicio.panelContenedor.Controls.Add(frmEmpleadoAdd);
             frmEmpleadoAdd.Show();
         }
 
@@ -41,6 +41,8 @@ namespace RevistasSA
         {
             DataTable dt = database.ObtenerDatosEmpleados();
             dgvEmpleados.DataSource = dt;
+            dgvEmpleados.Columns["Direccion"].Width = 170;
+            dgvEmpleados.Columns["Nombre"].Width = 170;
         }
     }
 }

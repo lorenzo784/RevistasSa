@@ -23,6 +23,7 @@ namespace RevistasSA
 
         private int clienteId = 0;
         private int revistaId = 0;
+        private int empleadoId = 0;
 
         private void tbBuscarCliente_TextChanged(object sender, EventArgs e)
         {
@@ -36,42 +37,23 @@ namespace RevistasSA
             if (tbBuscarCliente.Text.Length >= 2)
             {
 
-                string consulta = "SELECT ClienteID, CONCAT(Nombre, ' ', Apellido) as Nombre, Nit, Direccion, Telefono " +
-                                "FROM Cliente WHERE Nombre LIKE @Cliente OR Nit LIKE @Cliente";
-                try
+                var dt = database.BuscarCliente(tbBuscarCliente.Text);
+
+                if (dt != null && dt.Rows.Count > 0)
                 {
-                    SqlCommand cmd = new SqlCommand(consulta, database.cn);
+                    dataGridView1.DataSource = dt;
 
-                    cmd.Parameters.AddWithValue("@Cliente", $"%{tbBuscarCliente.Text}%"); // Reemplaza 'nombre' por el valor que desees buscar
+                    dataGridView1.Columns["ClienteID"].Visible = false;
+                    dataGridView1.Columns["Direccion"].Visible = false;
+                    dataGridView1.Columns["Telefono"].Visible = false;
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-
-                    adapter.Fill(dt);
-
-                    if (dt != null && dt.Rows.Count > 0)
-                    {
-                        dataGridView1.DataSource = dt;
-
-                        dataGridView1.Columns["ClienteID"].Visible = false;
-                        dataGridView1.Columns["Direccion"].Visible = false;
-                        dataGridView1.Columns["Telefono"].Visible = false;
-
-                        dataGridView1.Columns["Nombre"].Width = 140;
-                        dataGridView1.Height = dataGridView1.Rows.Count * 50;
-                    }
-                    else
-                    {
-                        dataGridView1.Height = 0;
-                    }
-
-
+                    dataGridView1.Columns["Nombre"].Width = 140;
+                    dataGridView1.Height = dataGridView1.Rows.Count * 50;
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Error al obtener los datos: " + ex.ToString());
+                    dataGridView1.Height = 0;
                 }
-
 
             }
             else if (tbBuscarCliente.TextLength <= 0)
@@ -175,15 +157,24 @@ namespace RevistasSA
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (clienteId == 0 || revistaId == 0 || empleadoId == 0 || tbDireccionEntrega.Text == "")
+            {
+                MessageBox.Show("Rellene los campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             long segundos = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            int numeroUnico = (int)(segundos % 100000000);
-            string numeroUnicoString = numeroUnico.ToString("D8");
+            int numeroUnico = (int)(segundos % 1000);
+            string numeroUnicoString = numeroUnico.ToString("D3");
+
+            numeroUnicoString = $"SUS{numeroUnicoString}";
             var fechaInicio = dtFechaInicio.Value;
             var fechaFin = dtFechaFinalizacion.Value;
             var fechaActual = DateTime.Now;
             database.InsertarSuscripcion(clienteId, revistaId, fechaInicio, fechaFin, numeroUnicoString);
             int suscripcionId = database.ObtenerUltimaSuscripcion();
-            database.InsertarEntrega(suscripcionId, 1, fechaActual, fechaActual, tbDireccionEntrega.Text, lbTelefono.Text, "");
+            database.InsertarEntrega(suscripcionId, empleadoId, fechaActual, fechaActual, tbDireccionEntrega.Text, lbTelefono.Text, "Primera entrega");
+            MessageBox.Show("La operación se realizó con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             limpiarCampos();
         }
 
@@ -199,5 +190,58 @@ namespace RevistasSA
             dataGridView1.Height = 0;
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView3.DataSource = database.ObtenerDatosEmpleados();
+            dataGridView3.Columns["EmpleadoID"].Visible = false;
+            dataGridView3.Columns["Telefono"].Visible = false;
+            dataGridView3.Columns["Direccion"].Visible = false;
+            dataGridView3.Columns["Nombre"].Width = 240;
+            dataGridView3.Height = 90;
+            if (textBox1.Text.Length >= 2)
+            {
+                var dt = database.BuscarEmpleado(textBox1.Text);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    dataGridView3.DataSource = dt;
+
+                    dataGridView3.Columns["Nombre"].Width = 240;
+                    dataGridView3.Columns["EmpleadoID"].Visible = false;
+                    dataGridView3.Height = dataGridView3.Rows.Count * 50;
+                }
+                else
+                {
+                    dataGridView1.Height = 0;
+                }
+
+            }
+            else if (textBox1.TextLength <= 0)
+            {
+                dataGridView3.DataSource = database.ObtenerDatosEmpleados();
+                dataGridView3.Columns["EmpleadoID"].Visible = false;
+                dataGridView3.Columns["Telefono"].Visible = false;
+                dataGridView3.Columns["Direccion"].Visible = false;
+                dataGridView3.Columns["Nombre"].Width = 240;
+                dataGridView3.Height = 90;
+            }
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            dataGridView3.DataSource = database.ObtenerDatosEmpleados();
+            dataGridView3.Columns["EmpleadoID"].Visible = false;
+            dataGridView3.Columns["Telefono"].Visible = false;
+            dataGridView3.Columns["Direccion"].Visible = false;
+            dataGridView3.Columns["Nombre"].Width = 240;
+            dataGridView3.Height = 90;
+        }
+
+        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow filaSeleccionada = dataGridView3.Rows[e.RowIndex];
+            empleadoId = int.Parse(filaSeleccionada.Cells["EmpleadoID"].Value.ToString());
+            textBox1.Text = filaSeleccionada.Cells["Nombre"].Value.ToString();
+            dataGridView3.Height = 0;
+        }
     }
 }

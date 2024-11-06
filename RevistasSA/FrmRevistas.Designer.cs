@@ -37,18 +37,19 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(248, 27);
+            label1.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
+            label1.Location = new Point(340, 39);
             label1.Name = "label1";
-            label1.Size = new Size(85, 24);
+            label1.Size = new Size(95, 22);
             label1.TabIndex = 0;
             label1.Text = "Revistas";
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(431, 27);
+            btnAgregar.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
+            btnAgregar.Location = new Point(649, 34);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(75, 33);
+            btnAgregar.Size = new Size(99, 33);
             btnAgregar.TabIndex = 1;
             btnAgregar.Text = "Nuevo";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -59,21 +60,21 @@
             dgvRevistas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRevistas.Location = new Point(43, 111);
             dgvRevistas.Name = "dgvRevistas";
-            dgvRevistas.Size = new Size(472, 492);
+            dgvRevistas.Size = new Size(705, 506);
             dgvRevistas.TabIndex = 2;
             // 
             // FrmRevistas
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.BlanchedAlmond;
-            ClientSize = new Size(576, 682);
+            BackColor = Color.FromArgb(0, 122, 204);
+            ClientSize = new Size(800, 677);
             Controls.Add(dgvRevistas);
             Controls.Add(btnAgregar);
             Controls.Add(label1);
             Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "FrmRevistas";
             Text = "FrmRevistas";
             ((System.ComponentModel.ISupportInitialize)dgvRevistas).EndInit();
