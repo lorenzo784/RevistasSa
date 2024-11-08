@@ -19,6 +19,16 @@ namespace RevistasSA
         {
             InitializeComponent();
             this.database = database;
+            FrmInicio frm = new FrmInicio();
+
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+
+            panelContenedor.Controls.Clear();
+
+            panelContenedor.Controls.Add(frm);
+            frm.Show();
         }
         private void AbrirForms(object frm)
         {
@@ -110,6 +120,20 @@ namespace RevistasSA
 
             panelContenedor.Controls.Add(frmEntregas);
             frmEntregas.Show();
+        }
+
+        private void btnLogo_Click(object sender, EventArgs e)
+        {
+            FrmInicio frm = new FrmInicio();
+
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+
+            panelContenedor.Controls.Clear();
+
+            panelContenedor.Controls.Add(frm);
+            frm.Show();
         }
     }
 }

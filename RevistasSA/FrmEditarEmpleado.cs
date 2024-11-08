@@ -1,4 +1,5 @@
 ﻿using RevistasSA.Datos;
+using RevistasSA.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,40 +12,47 @@ using System.Windows.Forms;
 
 namespace RevistasSA
 {
-    public partial class FrmAgregarRevista : Form
+    public partial class FrmEditarEmpleado : Form
     {
+        private Empleado empleado;
         private Database database;
         private FrmPrincipal inicio;
-        public FrmAgregarRevista(FrmPrincipal inicio, Database database)
+        public FrmEditarEmpleado(FrmPrincipal inicio, Empleado empleado, Database database)
         {
             InitializeComponent();
+            this.empleado = empleado;
             this.database = database;
             this.inicio = inicio;
+            cargarDatos();
+        }
+
+        private void cargarDatos()
+        {
+            if (empleado == null)
+            {
+                MessageBox.Show("Ocurrió un error. Por favor, intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            tbNombre.Text = empleado.Nombre;
+            tbApellido.Text = empleado.Apellido;
+            tbDireccion.Text = empleado.Direccion;
+            tbTelefono.Text = empleado.Telefono;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (tbNombre.Text == "" || tbPrecio.Text == "" || tbCategoria.Text == "" || tbFrecuencia.Text == "")
+            if (tbNombre.Text == "" || tbApellido.Text == "" || tbDireccion.Text == "" || tbTelefono.Text == "")
             {
                 MessageBox.Show("Rellene los campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             string nombre = tbNombre.Text;
-            string precio = tbPrecio.Text;
-            string categoria = tbCategoria.Text;
-            string frecuencia = tbFrecuencia.Text;
-            database.InsertarEmpleado(nombre, precio, categoria, frecuencia);
+            string apellido = tbApellido.Text;
+            string direccion = tbDireccion.Text;
+            string telefono = tbTelefono.Text;
+            database.ModificarEmpleado(empleado.EmpleadoID, nombre, apellido, telefono,direccion);
             MessageBox.Show("La operación se realizó con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            limpiarCampos();
             mostrarDatos();
-        }
-
-        private void limpiarCampos()
-        {
-            tbNombre.Text = "";
-            tbPrecio.Text = "";
-            tbCategoria.Text = "";
-            tbFrecuencia.Text = "";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -54,7 +62,7 @@ namespace RevistasSA
 
         private void mostrarDatos()
         {
-            FrmRevistas frm = new FrmRevistas(inicio, database);
+            FrmEmpleados frm = new FrmEmpleados(inicio, database);
 
             frm.TopLevel = false;
             frm.FormBorderStyle = FormBorderStyle.None;

@@ -37,6 +37,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label1.Location = new Point(352, 29);
             label1.Name = "label1";
@@ -46,20 +47,32 @@
             // 
             // dgvEmpleados
             // 
+            dgvEmpleados.AllowUserToAddRows = false;
+            dgvEmpleados.AllowUserToDeleteRows = false;
+            dgvEmpleados.AllowUserToResizeColumns = false;
+            dgvEmpleados.AllowUserToResizeRows = false;
+            dgvEmpleados.BackgroundColor = SystemColors.ControlLightLight;
             dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmpleados.GridColor = SystemColors.GrayText;
             dgvEmpleados.Location = new Point(49, 92);
             dgvEmpleados.Name = "dgvEmpleados";
-            dgvEmpleados.Size = new Size(707, 535);
+            dgvEmpleados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEmpleados.Size = new Size(689, 535);
             dgvEmpleados.TabIndex = 1;
+            dgvEmpleados.CellClick += dgvEmpleados_CellClick;
+            dgvEmpleados.CellContentClick += dgvEmpleados_CellContentClick;
             // 
             // btnAgregar
             // 
-            btnAgregar.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
-            btnAgregar.Location = new Point(664, 29);
+            btnAgregar.Font = new Font("Lucida Fax", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregar.Image = Properties.Resources.anadir16;
+            btnAgregar.Location = new Point(628, 29);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(92, 29);
+            btnAgregar.Size = new Size(110, 29);
             btnAgregar.TabIndex = 2;
-            btnAgregar.Text = "Nuevo";
+            btnAgregar.Text = "Agregar";
+            btnAgregar.TextAlign = ContentAlignment.MiddleRight;
+            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
             // 
@@ -68,6 +81,7 @@
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 122, 204);
+            BackgroundImage = Properties.Resources.fondo;
             ClientSize = new Size(800, 677);
             Controls.Add(btnAgregar);
             Controls.Add(dgvEmpleados);

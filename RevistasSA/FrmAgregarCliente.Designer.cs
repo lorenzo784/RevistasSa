@@ -40,11 +40,13 @@
             tbNit = new TextBox();
             label6 = new Label();
             btnAgregar = new Button();
+            btnCancelar = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label1.Location = new Point(355, 31);
             label1.Margin = new Padding(4, 0, 4, 0);
@@ -155,21 +157,40 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
+            btnAgregar.Font = new Font("Lucida Fax", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregar.Image = Properties.Resources.anadir16;
             btnAgregar.Location = new Point(645, 603);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(111, 35);
             btnAgregar.TabIndex = 28;
             btnAgregar.Text = "Agregar";
+            btnAgregar.TextAlign = ContentAlignment.MiddleRight;
+            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Font = new Font("Lucida Fax", 12F, FontStyle.Bold);
+            btnCancelar.Image = Properties.Resources.cancelar;
+            btnCancelar.Location = new Point(634, 550);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(122, 33);
+            btnCancelar.TabIndex = 42;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.TextAlign = ContentAlignment.MiddleRight;
+            btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // FrmAgregarCliente
             // 
             AutoScaleDimensions = new SizeF(10F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 122, 204);
+            BackgroundImage = Properties.Resources.fondo;
             ClientSize = new Size(800, 677);
+            Controls.Add(btnCancelar);
             Controls.Add(btnAgregar);
             Controls.Add(tbNit);
             Controls.Add(label6);
@@ -205,5 +226,6 @@
         private TextBox tbNit;
         private Label label6;
         private Button btnAgregar;
+        private Button btnCancelar;
     }
 }

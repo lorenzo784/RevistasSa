@@ -11,11 +11,13 @@ namespace RevistasSA
     public partial class FrmAgregarEntrega : Form
     {
         private Database database;
+        private FrmPrincipal inicio;
 
-        public FrmAgregarEntrega(Database database)
+        public FrmAgregarEntrega(Database database, FrmPrincipal inicio)
         {
             InitializeComponent();
             this.database = database;
+            this.inicio = inicio;
             int ultimaSuscripcion = database.ObtenerUltimaSuscripcion();
             lbNoSuscripcion.Text = (ultimaSuscripcion + 1).ToString();
             lbFecha.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -157,29 +159,51 @@ namespace RevistasSA
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (clienteId == 0 || revistaId == 0 || empleadoId == 0 || tbDireccionEntrega.Text == "")
+            // Validación de campos requeridos
+            if (clienteId == 0 || revistaId == 0 || empleadoId == 0 || string.IsNullOrWhiteSpace(tbDireccionEntrega.Text))
             {
-                MessageBox.Show("Rellene los campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Rellene todos los campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             long segundos = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             int numeroUnico = (int)(segundos % 1000);
             string numeroUnicoString = numeroUnico.ToString("D3");
-
             numeroUnicoString = $"SUS{numeroUnicoString}";
-            var fechaInicio = dtFechaInicio.Value;
-            var fechaFin = dtFechaFinalizacion.Value;
-            var fechaActual = DateTime.Now;
-            database.InsertarSuscripcion(clienteId, revistaId, fechaInicio, fechaFin, numeroUnicoString);
-            int suscripcionId = database.ObtenerUltimaSuscripcion();
-            database.InsertarEntrega(suscripcionId, empleadoId, fechaActual, fechaActual, tbDireccionEntrega.Text, lbTelefono.Text, "Primera entrega");
-            MessageBox.Show("La operación se realizó con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            limpiarCampos();
+
+            // Obtener las fechas en el formato adecuado
+            var fechaInicio = dtFechaInicio.Value.ToString("yyyy-MM-dd");
+            var fechaFin = dtFechaFinalizacion.Value.ToString("yyyy-MM-dd");
+            var fechaActual = DateTime.Now.Date.ToString("yyyy-MM-dd");  // Si prefieres mantener el formato como cadena
+
+            try
+            {
+                // Insertar la suscripción
+                database.InsertarSuscripcion(clienteId, revistaId, fechaInicio, fechaFin, numeroUnicoString);
+
+                // Obtener el ID de la última suscripción
+                int suscripcionId = database.ObtenerUltimaSuscripcion();
+
+                // Insertar la entrega con los datos de la suscripción
+                database.InsertarEntrega(suscripcionId, empleadoId, fechaActual, fechaActual, tbDireccionEntrega.Text, lbTelefono.Text, "Primera entrega");
+
+                MessageBox.Show("La operación se realizó con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hubo un error al realizar la operación: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Limpiar los campos después de realizar la operación
+                limpiarCampos();
+            }
         }
+
 
         private void limpiarCampos()
         {
+            tbBuscarEmpleado.Text = "";
             tbBuscarCliente.Text = "";
             tbBuscarRevista.Text = "";
             tbDireccionEntrega.Text = "";
@@ -198,9 +222,9 @@ namespace RevistasSA
             dataGridView3.Columns["Direccion"].Visible = false;
             dataGridView3.Columns["Nombre"].Width = 240;
             dataGridView3.Height = 90;
-            if (textBox1.Text.Length >= 2)
+            if (tbBuscarEmpleado.Text.Length >= 2)
             {
-                var dt = database.BuscarEmpleado(textBox1.Text);
+                var dt = database.BuscarEmpleado(tbBuscarEmpleado.Text);
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     dataGridView3.DataSource = dt;
@@ -215,7 +239,7 @@ namespace RevistasSA
                 }
 
             }
-            else if (textBox1.TextLength <= 0)
+            else if (tbBuscarEmpleado.TextLength <= 0)
             {
                 dataGridView3.DataSource = database.ObtenerDatosEmpleados();
                 dataGridView3.Columns["EmpleadoID"].Visible = false;
@@ -240,8 +264,28 @@ namespace RevistasSA
         {
             DataGridViewRow filaSeleccionada = dataGridView3.Rows[e.RowIndex];
             empleadoId = int.Parse(filaSeleccionada.Cells["EmpleadoID"].Value.ToString());
-            textBox1.Text = filaSeleccionada.Cells["Nombre"].Value.ToString();
+            tbBuscarEmpleado.Text = filaSeleccionada.Cells["Nombre"].Value.ToString();
             dataGridView3.Height = 0;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            mostrarDatos();
+        }
+
+
+        private void mostrarDatos()
+        {
+            FrmEmpleados frm = new FrmEmpleados(inicio, database);
+
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+
+            inicio.panelContenedor.Controls.Clear();
+
+            inicio.panelContenedor.Controls.Add(frm);
+            frm.Show();
         }
     }
 }

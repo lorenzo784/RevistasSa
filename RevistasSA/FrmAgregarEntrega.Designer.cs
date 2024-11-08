@@ -54,8 +54,9 @@
             tbBuscarRevista = new TextBox();
             btnAgregar = new Button();
             dataGridView3 = new DataGridView();
-            textBox1 = new TextBox();
+            tbBuscarEmpleado = new TextBox();
             label8 = new Label();
+            btnCancelar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
@@ -322,12 +323,15 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
-            btnAgregar.Location = new Point(648, 609);
+            btnAgregar.Font = new Font("Lucida Fax", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregar.Image = Properties.Resources.anadir16;
+            btnAgregar.Location = new Point(635, 609);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(102, 35);
+            btnAgregar.Size = new Size(115, 35);
             btnAgregar.TabIndex = 26;
             btnAgregar.Text = "Agregar";
+            btnAgregar.TextAlign = ContentAlignment.MiddleRight;
+            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
             // 
@@ -352,14 +356,14 @@
             dataGridView3.TabIndex = 28;
             dataGridView3.CellClick += dataGridView3_CellClick;
             // 
-            // textBox1
+            // tbBuscarEmpleado
             // 
-            textBox1.Location = new Point(486, 18);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(264, 26);
-            textBox1.TabIndex = 27;
-            textBox1.TextChanged += textBox1_TextChanged;
-            textBox1.Enter += textBox1_Enter;
+            tbBuscarEmpleado.Location = new Point(486, 18);
+            tbBuscarEmpleado.Name = "tbBuscarEmpleado";
+            tbBuscarEmpleado.Size = new Size(264, 26);
+            tbBuscarEmpleado.TabIndex = 27;
+            tbBuscarEmpleado.TextChanged += textBox1_TextChanged;
+            tbBuscarEmpleado.Enter += textBox1_Enter;
             // 
             // label8
             // 
@@ -371,15 +375,31 @@
             label8.TabIndex = 29;
             label8.Text = "Empleado: ";
             // 
+            // btnCancelar
+            // 
+            btnCancelar.Font = new Font("Lucida Fax", 12F, FontStyle.Bold);
+            btnCancelar.Image = Properties.Resources.cancelar;
+            btnCancelar.Location = new Point(628, 543);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(122, 33);
+            btnCancelar.TabIndex = 50;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.TextAlign = ContentAlignment.MiddleRight;
+            btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // FrmAgregarEntrega
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 122, 204);
+            BackgroundImage = Properties.Resources.fondo;
             ClientSize = new Size(800, 677);
+            Controls.Add(btnCancelar);
             Controls.Add(label8);
             Controls.Add(dataGridView3);
-            Controls.Add(textBox1);
+            Controls.Add(tbBuscarEmpleado);
             Controls.Add(btnAgregar);
             Controls.Add(tbBuscarRevista);
             Controls.Add(dataGridView2);
@@ -445,7 +465,8 @@
         private TextBox tbBuscarRevista;
         private Button btnAgregar;
         private DataGridView dataGridView3;
-        private TextBox textBox1;
+        private TextBox tbBuscarEmpleado;
         private Label label8;
+        private Button btnCancelar;
     }
 }

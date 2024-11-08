@@ -37,6 +37,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
             label1.Location = new Point(340, 39);
             label1.Name = "label1";
@@ -46,35 +47,43 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
-            btnAgregar.Location = new Point(649, 34);
+            btnAgregar.Font = new Font("Lucida Fax", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregar.Image = Properties.Resources.anadir16;
+            btnAgregar.Location = new Point(639, 34);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(99, 33);
+            btnAgregar.Size = new Size(109, 33);
             btnAgregar.TabIndex = 1;
-            btnAgregar.Text = "Nuevo";
+            btnAgregar.Text = "Agregar";
+            btnAgregar.TextAlign = ContentAlignment.MiddleRight;
+            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
             // 
             // dgvRevistas
             // 
+            dgvRevistas.AllowUserToAddRows = false;
+            dgvRevistas.BackgroundColor = SystemColors.ControlLightLight;
             dgvRevistas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRevistas.Location = new Point(43, 111);
             dgvRevistas.Name = "dgvRevistas";
+            dgvRevistas.ReadOnly = true;
             dgvRevistas.Size = new Size(705, 506);
             dgvRevistas.TabIndex = 2;
+            dgvRevistas.CellContentClick += dgvRevistas_CellContentClick;
             // 
             // FrmRevistas
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 122, 204);
+            BackgroundImage = Properties.Resources.fondo;
             ClientSize = new Size(800, 677);
             Controls.Add(dgvRevistas);
             Controls.Add(btnAgregar);
             Controls.Add(label1);
             Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "FrmRevistas";
             Text = "FrmRevistas";
             ((System.ComponentModel.ISupportInitialize)dgvRevistas).EndInit();

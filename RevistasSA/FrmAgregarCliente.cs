@@ -15,10 +15,12 @@ namespace RevistasSA
     public partial class FrmAgregarCliente : Form
     {
         Database database;
-        public FrmAgregarCliente(Database database)
+        private FrmPrincipal inicio;
+        public FrmAgregarCliente(FrmPrincipal inicio, Database database)
         {
             InitializeComponent();
             this.database = database;
+            this.inicio = inicio;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -36,6 +38,7 @@ namespace RevistasSA
             database.InsertarCliente(nombre, apellido, direccion, telefono, nit);
             MessageBox.Show("La operación se realizó con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             limpiarCampos();
+            mostrarDatos();
         }
 
         private void limpiarCampos()
@@ -45,6 +48,25 @@ namespace RevistasSA
             tbDireccion.Text = "";
             tbTelefono.Text = "";
             tbNit.Text = "";
+        }
+
+        private void mostrarDatos()
+        {
+            FrmClientes frm = new FrmClientes(inicio, database);
+
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+
+            inicio.panelContenedor.Controls.Clear();
+
+            inicio.panelContenedor.Controls.Add(frm);
+            frm.Show();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            mostrarDatos();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace RevistasSA
 {
-    partial class FrmSuscripciones
+    partial class FrmInicio
     {
         /// <summary>
         /// Required designer variable.
@@ -29,48 +29,35 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            dgvSuscipciones = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgvSuscipciones).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Lucida Fax", 14.25F, FontStyle.Bold);
-            label1.Location = new Point(336, 32);
+            label1.Font = new Font("Lucida Fax", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(165, 261);
             label1.Name = "label1";
-            label1.Size = new Size(150, 22);
+            label1.RightToLeft = RightToLeft.No;
+            label1.Size = new Size(461, 64);
             label1.TabIndex = 0;
-            label1.Text = "Suscripciones";
+            label1.Text = "Sistema de Entrega de Revistas\r\nRevistas S.A.";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // dgvSuscipciones
+            // FrmInicio
             // 
-            dgvSuscipciones.AllowUserToAddRows = false;
-            dgvSuscipciones.BackgroundColor = SystemColors.ControlLightLight;
-            dgvSuscipciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSuscipciones.Location = new Point(44, 109);
-            dgvSuscipciones.Name = "dgvSuscipciones";
-            dgvSuscipciones.ReadOnly = true;
-            dgvSuscipciones.Size = new Size(705, 509);
-            dgvSuscipciones.TabIndex = 2;
-            dgvSuscipciones.CellContentClick += dgvSuscipciones_CellContentClick;
-            // 
-            // FrmSuscripciones
-            // 
-            AutoScaleDimensions = new SizeF(9F, 19F);
+            AutoScaleDimensions = new SizeF(9F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 122, 204);
             BackgroundImage = Properties.Resources.fondo;
             ClientSize = new Size(800, 677);
-            Controls.Add(dgvSuscipciones);
             Controls.Add(label1);
-            Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DoubleBuffered = true;
+            Font = new Font("Lucida Fax", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4);
-            Name = "FrmSuscripciones";
-            Text = "FrmSuscripciones";
-            ((System.ComponentModel.ISupportInitialize)dgvSuscipciones).EndInit();
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "FrmInicio";
+            Text = "FrmInicio";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -78,6 +65,5 @@
         #endregion
 
         private Label label1;
-        private DataGridView dgvSuscipciones;
     }
 }

@@ -6,7 +6,7 @@ namespace RevistasSA.Datos
 {
     public class DatabaseInitializer
     {
-        private string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RevistasSA.db"); // Ruta de la base de datos
+        private string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DBRevistasSA.db"); // Ruta de la base de datos
 
         public void CrearBaseDeDatos()
         {
@@ -60,8 +60,8 @@ namespace RevistasSA.Datos
                 SuscripcionID INTEGER PRIMARY KEY AUTOINCREMENT,
                 ClienteID INTEGER,
                 RevistaID INTEGER,
-                FechaInicio DATE NOT NULL,
-                FechaFin DATE NOT NULL,
+                FechaInicio NVARCHAR(255) NOT NULL,
+                FechaFin NVARCHAR(255) NOT NULL,
                 NumeroSuscripcion NVARCHAR(50) UNIQUE NOT NULL,
                 FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
                 FOREIGN KEY (RevistaID) REFERENCES Revista(RevistaID)
@@ -71,8 +71,8 @@ namespace RevistasSA.Datos
                 EntregaID INTEGER PRIMARY KEY AUTOINCREMENT,
                 SuscripcionID INTEGER,
                 EmpleadoID INTEGER,
-                FechaProgramada DATE NOT NULL,
-                FechaEntrega DATE,
+                FechaProgramada NVARCHAR(255) NOT NULL,
+                FechaEntrega NVARCHAR(255),
                 DireccionEntrega NVARCHAR(255) NOT NULL,
                 TelefonoEntrega NVARCHAR(20),
                 Observaciones NVARCHAR(255),

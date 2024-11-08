@@ -6,11 +6,22 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Title>RevistasSA</Title>
+    <Description>Aplicativo para entrega de Revistas</Description>
+    <Copyright>Copyright © 2024</Copyright>
+    <PackageIcon>libro.png</PackageIcon>
+    <Authors>Lorenzo López</Authors>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Forms\" />
-	<Folder Include="Modelos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Downloads\libro.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
